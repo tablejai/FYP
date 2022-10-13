@@ -1,3 +1,6 @@
 ESP32-Glove/.devcontainer
 ESP32-Glove/.vscode
 ESP32-Glove/.build
+Web-Post-Server/node_modules
+Web-Post-Server/.env
+.DS_Store
