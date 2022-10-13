@@ -1,3 +1,6 @@
 [submodule "esp32_mpu6500"]
 	path = esp32_mpu6500
 	url = git@github.com:Harrisonust/esp32_mpu6500.git
+[submodule "FYP-ROS"]
+	path = FYP-ROS
+	url = git@github.com:tablejai/FYP-ROS.git
