@@ -31,6 +31,8 @@ MPU_t mpu_list[CLUSTER_SIZE];
 mpu_data_t mpu_data[CLUSTER_SIZE];
 uint8_t CS[CLUSTER_SIZE] = {CS1, CS2, CS3};
 spi_device_handle_t spi_handle;
+char data_str[100];
+
 void mpu6500_task(void* par) {
     ESP_ERROR_CHECK(spi_init(MOSI, MISO, SCLK, 128));
 
@@ -76,10 +78,14 @@ void mpu6500_task(void* par) {
         }
 
         print_Cluster_data(mpu_data, CLUSTER_SIZE);
-        // float f = mpu_data[0].rpy.roll;
-        // char str[50];  // size of the number
-        // sprintf(str, "%f", 0.01);
-        post_function("str");
+        sprintf(data_str, "{\n\"mpu0\":{\n%f\n%f\n%f\n%f\n%f\n%f\n}\"\n}",
+                mpu_data[0].accel.x,
+                mpu_data[0].accel.y,
+                mpu_data[0].accel.z,
+                mpu_data[0].gyro.x,
+                mpu_data[0].gyro.y,
+                mpu_data[0].gyro.z);
+        post_function(data_str);
 
         // print_mpu_accel(mpu_data[0].accel);
         // print_mpu_gyro(mpu_data[0].gyro);
@@ -89,12 +95,33 @@ void mpu6500_task(void* par) {
     }
 }
 
+void blink(void* par) {
+    // init
+    gpio_reset_pin(LED);
+    gpio_set_direction(LED, GPIO_MODE_OUTPUT);
+
+    uint8_t led_state = 0;
+    while (1) {
+        gpio_set_level(LED, led_state);
+        led_state = !led_state;
+        ESP_LOGI("blink_task", "stack\t%d byte", uxTaskGetStackHighWaterMark(NULL) * 4);
+        vTaskDelay(200 / portTICK_PERIOD_MS);
+    }
+}
+
 void app_main(void) {
     res_init();
 
     wifi_init();
 
     // printf("Waiting for 2 seconds lmao \r\n");
+    xTaskCreate(
+        blink,
+        "blink_task",
+        3072,
+        NULL,
+        1,
+        NULL);
 
     xTaskCreate(
         mpu6500_task,
