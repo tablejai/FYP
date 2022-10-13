@@ -1,22 +1,20 @@
-#include "freertos/FreeRTOS.h"
-#include "freertos/event_groups.h"
-#include "esp_wifi.h"
-#include "esp_log.h"
-#include "esp_event.h"
-#include "nvs_flash.h"
-#include "nvs.h"
-#include "wifi.h"
-#include "http.h"
-
 #include <math.h>
 #include <stdio.h>
 
 #include "driver/gpio.h"
 #include "driver/spi_master.h"
+#include "esp_event.h"
+#include "esp_log.h"
+#include "esp_wifi.h"
 #include "freertos/FreeRTOS.h"
+#include "freertos/event_groups.h"
+#include "http.h"
 #include "mpu6500.h"
 #include "mpu6500_cluster.h"
+#include "nvs.h"
+#include "nvs_flash.h"
 #include "spi.h"
+#include "wifi.h"
 
 #define LED 38
 #define MOSI 35
@@ -78,10 +76,10 @@ void mpu6500_task(void* par) {
         }
 
         print_Cluster_data(mpu_data, CLUSTER_SIZE);
-        float f = mpu_data[0].rpy.roll;
-        char str[50]; //size of the number
-        sprintf(str, "%g", f);
-        post_function("{\"name\":\"roll:%s\"}", str);
+        // float f = mpu_data[0].rpy.roll;
+        // char str[50];  // size of the number
+        // sprintf(str, "%f", 0.01);
+        post_function("str");
 
         // print_mpu_accel(mpu_data[0].accel);
         // print_mpu_gyro(mpu_data[0].gyro);
@@ -91,12 +89,10 @@ void mpu6500_task(void* par) {
     }
 }
 
-void app_main(void)
-{
+void app_main(void) {
     res_init();
 
     wifi_init();
-
 
     // printf("Waiting for 2 seconds lmao \r\n");
 

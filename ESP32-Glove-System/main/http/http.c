@@ -1,8 +1,6 @@
 #include "http.h"
-esp_err_t client_event_post_handler(esp_http_client_event_handle_t evt)
-{
-    switch (evt->event_id)
-    {
+esp_err_t client_event_post_handler(esp_http_client_event_handle_t evt) {
+    switch (evt->event_id) {
     case HTTP_EVENT_ON_DATA:
         printf("HTTP_EVENT_ON_DATA: %.*s\n", evt->data_len, (char *)evt->data);
         break;
@@ -13,8 +11,7 @@ esp_err_t client_event_post_handler(esp_http_client_event_handle_t evt)
     return ESP_OK;
 }
 
-void post_function(char* data)
-{
+void post_function(char *data) {
     esp_http_client_config_t config_post = {
         .url = "http://172.20.10.5:3000/api/post",
         .method = HTTP_METHOD_POST,
