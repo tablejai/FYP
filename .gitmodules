@@ -4,3 +4,6 @@
 [submodule "FYP-ROS"]
 	path = FYP-ROS
 	url = git@github.com:tablejai/FYP-ROS.git
+[submodule "ESP32-Glove-System"]
+	path = ESP32-Glove-System
+	url = git@github.com:Harrisonust/ESP32-Glove-System.git
