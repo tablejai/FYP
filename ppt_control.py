@@ -42,6 +42,6 @@ def receive_command():
     pyautogui_output = ppt_command_map[command_received]
     print("pyautogui output: ", pyautogui_output)
     ppt_control_state(pyautogui_output)
-    return 0
+    return "received"
 
 app.run(host='0.0.0.0', port=7000, debug=True)
