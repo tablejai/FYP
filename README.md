@@ -27,4 +27,4 @@ This project consists of two main submodules:
 ## Demo
 A demo video showcasing the functionality of the project can be found at the following link: https://cse.hkust.edu.hk/ug/fyp/posters/gallery/2022-2023/96_CSB1_Media.mp4
 
-For more implementation detail, please find them here: res/fyp_final_report.pdf
+For more implementation detail, please find them here: [Smart Glove](res/fyp_final_report.pdf)
