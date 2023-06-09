@@ -1,6 +1,6 @@
 # FYP Control remote devices with air gestures
 
-This project develops a smart glove that can control electronic devices wirelessly. We have designed a physical smart glove embedded with sensors and wireless communication technologies. The data collected from the smart glove will be transmitted to a server that is capable of processing the sensor data and classify these time-series data into pre-defined gestures with machine learning. These gestures can then be sent to application and perform the task we intended with the gesture in an intuitive way. The project includes several applications to demonstrate the capabilities of the system, including control of PowerPoint and LED control using gestures received.
+In this project, we develop a smart glove that can control electronic devices wirelessly. We have designed a physical smart glove embedded with sensors and wireless communication technologies. The data collected from the smart glove will be transmitted to a server that is capable of processing the sensor data and classifying these time-series data into pre-defined gestures with machine learning. These gestures can then be sent to applications and perform the task we intended with the gesture in an intuitive way. The project includes several applications to demonstrate the capabilities of the system, including control of PowerPoint and LED control using gestures received.
 ![Glove](res/glove.jpg)
 
 ## System Architecture
@@ -18,10 +18,12 @@ The raw data received on the server side is in a JSON string and processed using
 ![Server Design](res/server_arch.jpg)
 
 ## Submodules
-1. FYP-Glove: communication between the glove and the server, imu driver, and compass
-2. FYP-Server: the server for fyp pipeline
+This project consists of two main submodules:
+
+1. FYP-Glove: This submodule handles the communication between the glove and the server. It includes the IMU driver and compass functionalities, ensuring the accurate collection and transmission of motion data.
+
+2. FYP-Server: This submodule contains the server implementation for the FYP pipeline. It includes the receiver, backend processing, gesture recognition, and command generation modules.
+
 
 ## Demo
-https://cse.hkust.edu.hk/ug/fyp/posters/gallery/2022-2023/96_CSB1_Media.mp4
-
-
+A demo video showcasing the functionality of the project can be found at the following link: https://cse.hkust.edu.hk/ug/fyp/posters/gallery/2022-2023/96_CSB1_Media.mp4
