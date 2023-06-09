@@ -24,6 +24,7 @@ This project consists of two main submodules:
 
 2. FYP-Server: This submodule contains the server implementation for the FYP pipeline. It includes the receiver, backend processing, gesture recognition, and command generation modules.
 
-
 ## Demo
 A demo video showcasing the functionality of the project can be found at the following link: https://cse.hkust.edu.hk/ug/fyp/posters/gallery/2022-2023/96_CSB1_Media.mp4
+
+For more implementation detail, please find them here: res/fyp_final_report.pdf
