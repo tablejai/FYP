@@ -25,11 +25,10 @@ The three IMUs (MPU9250) are connected to the ESP32-S3 through four data lines a
 三個 IMU（MPU9250）遵循串行外設介面（SPI）協議，通過四條數據線和兩條電源線連接到 ESP32-S3。此通訊協議可以在數據總線上訪問多個相同類型的從設備。此外，一個指南針（GY26）遵循通用異步接收器/發射器（UART）協議，通過兩條數據線和兩條電源線連接到 ESP32-S3。
 
 Finally, we use a power bank to power the ESP32-S3.
-
 除此之外，我們使用了一個行動電源作為 ESP32-S3 的電源供應。![Hardware Design](res/hardware_structure.jpg)
 
 ## The Server Design
-First, we set up a Flask server to receive raw data represented as a JSON string. The server then performs data filtering and transformation calculations (from world coordinates to palm coordinates) using several backend nodes. The processed data is then fed into the model to infer the gesture class based on a pre-trained gesture model. Finally, the decision module retrieves the output from the gesture recognition model and combines it with the orientation information of the gesture to send commands to the target devices.
+First, we establish a Flask server to receive raw data represented as a JSON string. The server then performs data filtering and transformation calculations (from world coordinates to palm coordinates) using several backend nodes. The processed data is then fed into the model to infer the gesture class based on a pre-trained gesture model. Finally, the decision module retrieves the output from the gesture recognition model and combines it with the orientation information of the gesture to send commands to the target devices.
 首先，我們建立一個 Flask 伺服器來接收以 JSON 字符串表示的原始數據。接著伺服器藉由後端節點來進行數據過濾和轉換計算（從對地座標轉為對手掌坐標）等任務。接著被處理好的數據將會被輸入至模型，並且根據預訓練的手勢模型來推斷手勢類別。最後，決策模塊將從手勢識別模型獲取輸出，並結合手勢的方向訊息發送命令給目標設備。
 
 ![Server Design](res/server_arch.jpg)
